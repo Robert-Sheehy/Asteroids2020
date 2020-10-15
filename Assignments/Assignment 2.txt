@@ -1,0 +1,1 @@
+Each of you must enter on your work log 3 items to be implemented in the game, and submit to group repo via a pull request
