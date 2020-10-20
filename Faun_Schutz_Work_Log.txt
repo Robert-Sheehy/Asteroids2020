@@ -20,4 +20,4 @@ Implemention idea 3 - Adding a vapour trail or smoke coming out the back of the
                       to be set up to fad away not to far off from the ship 
                       otherwise it would get annoy if you flewback into it.
                       
-14/10/2020 - Assignment 2 - Finish  
+14/10/2020 - Assignment 2 - Finish.  
