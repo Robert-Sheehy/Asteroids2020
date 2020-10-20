@@ -1,2 +1,8 @@
 T00196102 Sean Conway 13/10/2020
 Created Work log,attempting to upload to main Repo.
+
+15/10/2020
+Suggestions for Space game:
+1.Enemies that the player can fight.
+2.Health or damage and make the player die.
+3.Collectables such as healthkits or damage multipliers.
