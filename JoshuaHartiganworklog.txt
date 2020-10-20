@@ -2,3 +2,10 @@ Joshua Hartigan T00210775
 
 15/10/2020
 Attempting to upload worklog to shared repository
+
+
+20/10/2020
+
+1 Swap to the unreal engine
+2 Add microtransactions
+3 Add space ship skins to sell to the whales
