@@ -11,3 +11,4 @@ Ideas for next step in astroids game.
 2. have astroids move randomly through the world
 3. create a border for the world
 4. shooting
+5. done
