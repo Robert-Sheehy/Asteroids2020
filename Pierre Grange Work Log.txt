@@ -3,4 +3,18 @@ Pierre Grange T00216263  13/10/2020 created by log file, I'm attempting to uploa
 Items to implement in the game :
 -Planets
 -Lazers
--Missiles 1
+-Missiles
+
+
+Create an asteroids script :
+-Asteroids need to move in a straight direction
+-Their speed is random (we should define a minimum and a maximum, depends on the max speed of the ship)
+-Big asteroids generate 2 to 3 smaller ones when they are destroyed
+-Big asteroids have XXX health points (depends on how much damage does a lazer deals)
+-Small asteroids have XX health points
+-Destroying a big asteroid grant the player XX points
+-Destroying a small asteroid grant the player XX points
+
+More Ideas :
+-Average speed of the asteroids increases with the timer/with the points earned
+-Spawning rate increases the same way
