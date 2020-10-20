@@ -1,3 +1,23 @@
 Faun Schutz - t00213674
 
 13/10/2020 - Created work log file and I am attemting to supmit to the main repo.
+
+14/10/2020 - Assignment 2 - Start
+
+Implemention idea 1 - We could set it up that our spaceship will switch between 
+                      missiles and a gun by a button press command which will 
+                      then have different levels of damage towards what ever 
+                      our enemie types will end up being. 
+
+Implemention idea 2 - We could add an explosion mechanic onto the missiles for
+                      when they come into contect with our enemie types to make 
+                      them have more damage but to off set this make there reload
+                      time to perhaps somthing like 5 to 10 seconds, and make 
+                      the gun shoot faster but have less damage then the missiles.
+                      
+Implemention idea 3 - Adding a vapour trail or smoke coming out the back of the 
+                      engine could be an interesting idea aswell, it would hav 
+                      to be set up to fad away not to far off from the ship 
+                      otherwise it would get annoy if you flewback into it.
+                      
+14/10/2020 - Assignment 2 - Finish.  
