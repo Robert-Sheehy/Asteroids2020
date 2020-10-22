@@ -42,4 +42,4 @@ Implemention idea 3 - Adding a vapour trail or smoke coming out the back of the
                       cold down time you fire the other, this could add an element of
                       difficulty to the game.   
                       
-20/10/2020 - Missile Lanch - Finishing.   
+20/10/2020 - Missile Lanch - Finishing..   
