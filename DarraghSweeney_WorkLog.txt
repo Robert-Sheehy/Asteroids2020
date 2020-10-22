@@ -1,5 +1,12 @@
 Darragh Sweeney T00221158
 
-13/10/2020,Created work log,Attempting to upload to main GuiHub.         sgsg
+13/10/2020: Created work log,Attempting to upload to main GuiHub.
 
-20/10/20 Spaceship game ideas: Add astroids, Add loot/Currency that enemies drop,Add space station where loot can be sold and upgrades for ship can be bought.  
+20/10/20: Spaceship game ideas: Add astroids,
+                                Add loot/Currency that enemies drop,
+                                Add space station where loot can be sold and upgrades for ship can be bought.  
+
+21/10/20:My part of the Spaceship game is to design and implement the menu, For the menu I'd like to use maybe a light blue opaque, hologram-esque, menu.The menu will need options such as a start button to get into the game, maybe an options 
+menu for lowering game volume and a credits are for crediting each students work.
+
+    For the code I would have to use C# to implement a GUI for when the game is first booted up and then possibly some IF statements for when a buttonn is clicked.
