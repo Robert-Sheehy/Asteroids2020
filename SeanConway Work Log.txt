@@ -14,4 +14,4 @@ Timer class will:
 1.display time
 2.count down
 3.warn when time is up 
-4.stop game when timer reaches zero
+4.stop game when timer reaches zero.
