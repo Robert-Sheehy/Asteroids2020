@@ -12,3 +12,18 @@ Ideas for next step in astroids game.
 3. create a border for the world
 4. shooting
 5. done
+
+20/10/2020
+	GUI Button will:
+	Activate Power up, Pause, main menu/quit
+
+	Power up-
+		*updates when empty and power up colected
+		*empties when power up used
+
+	Pause
+		* Pauses game
+		* If paused press will resume
+
+	Main menue
+		* returns to main menu after confermation message
