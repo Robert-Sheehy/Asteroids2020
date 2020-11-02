@@ -54,11 +54,13 @@ public class ShipControl : MonoBehaviour
             acceleration += spaceship_thrust_value *  transform.forward;
         acceleration -= drag_constant * velocity;
 
+        // Faun Schutz - changed controls for missiles firing to two separate buttons
+        if (Input.GetKeyDown(KeyCode.R))
+            fire_MissileRight();
+        if (Input.GetKeyDown(KeyCode.E))
+            fire_MissileLeft();
 
-        if (Input.GetKeyDown(KeyCode.Return))
-            fire_Missile();
 
-        
         velocity += acceleration * Time.deltaTime;
         transform.position += velocity * Time.deltaTime;
 
@@ -69,12 +71,14 @@ public class ShipControl : MonoBehaviour
 
     }
 
-    private void fire_Missile()
+    // Faun Schutz - changed controls for missiles firing
+    private void fire_MissileRight()
     {
-
-        FireMissileFrom(left_wing_spawn);
         FireMissileFrom(right_wing_spawn);
-
+    }
+    private void fire_MissileLeft()
+    {
+        FireMissileFrom(left_wing_spawn);
     }
 
     private void FireMissileFrom(Vector3 local_position)
