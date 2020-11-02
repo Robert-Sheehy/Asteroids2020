@@ -6,7 +6,8 @@ using UnityEngine;
 public class MissileControl : MonoBehaviour
 {
     Vector3 velocity, acceleration;
-    float thrust_value = 10;
+    // Faun Schutz - Upped thrust by 5
+    float thrust_value = 15;
     float missile_lifetime = 10;
     // Start is called before the first frame update
     void Start()

@@ -42,4 +42,16 @@ Implemention idea 3 - Adding a vapour trail or smoke coming out the back of the
                       cold down time you fire the other, this could add an element of
                       difficulty to the game.   
                       
-20/10/2020 - Missile Lanch - Finishing.   
+20/10/2020 - Missile Lanch - Finishing.
+
+29/10/2020 - Missile Lanch
+
+                      As plannedI changed the control settings on the missile to 
+                      'E' and 'R' for the left and right missiles you can also press 
+                      both together in order to fire both at the same time.
+                      
+                      I also attempted to change the prefab of the missile from assets
+                      downloaded from the unity assets store but I as having issues 
+                      with it -- talk to Rob about it!!
+                      
+29/10/2020 - Missile Lanch - Finishing.
