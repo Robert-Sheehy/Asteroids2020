@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MissileControl : MonoBehaviour
+public class MissileControlFaun : MonoBehaviour
 {
     Vector3 velocity, acceleration;
     // Faun Schutz - Upped thrust by 5
@@ -12,13 +12,13 @@ public class MissileControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject,missile_lifetime);
+        Destroy(gameObject, missile_lifetime);
     }
 
     // Update is called once per frame
     void Update()
     {
-        acceleration = thrust_value* transform.forward;
+        acceleration = thrust_value * transform.forward;
         velocity += acceleration * Time.deltaTime;
         transform.position += velocity * Time.deltaTime;
     }
