@@ -34,9 +34,9 @@ public class ShipControl : MonoBehaviour
         Vector3 spaceship_to_cube = theCube.transform.position - transform.position;
 
         if ((Vector3.Dot(spaceship_to_cube, transform.forward) / (spaceship_to_cube.magnitude * transform.forward.magnitude)) > 0.8f)
-            print("Locking On");
-        else
-            print("Cannot Lock on");
+            //print("Locking On");
+        //else
+            //print("Cannot Lock on");
        // print((Vector3.Dot(spaceship_to_cube, transform.forward)/(spaceship_to_cube.magnitude * transform.forward.magnitude)));
 
         if ( Input.GetKey(KeyCode.LeftArrow))

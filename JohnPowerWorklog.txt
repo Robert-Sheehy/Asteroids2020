@@ -19,12 +19,22 @@ Ideas for next step in astroids game.
 
 	Power up-
 		*updates when empty and power up colected
+		      *when colides with power up show symble of which one is active
+          
+		
 		*empties when power up used
 
 	Pause
 		* Pauses game
+		      show pause menu UI &  Time.timeScale=0;
 		* If paused press will resume
+		      resume time and deactivate pause menu
 
 	Main menue
 		* returns to main menu after confermation message
-		* 
+		    *Scene transition
+		* on death show score then transition to main menu
+	
+   
+
+  
