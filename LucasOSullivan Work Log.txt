@@ -1,3 +1,12 @@
 Lucas O'Sullivan t00207050
+
 03/11/2020
-Created work log file.
+Created worklog for Asteroids 2020 collaboration, Game Development Year 2.
+Attempted to upload to main repository.
+
+04/11/2020
+Provide text for:
+1. Menu elements
+2. Load-screens
+3. Heads-Up Display
+4. Hints
