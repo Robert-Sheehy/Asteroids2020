@@ -534,6 +534,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1134459909}
   - component: {fileID: 1134459908}
+  - component: {fileID: 1134459910}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Untagged
@@ -548,7 +549,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1134459907}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77b3ef965e663bb4e9f94727f9a0d0af, type: 3}
   m_Name: 
@@ -569,6 +570,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1134459910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134459907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2f42aea329bdb245917fe8c740199e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missile_clone_template: {fileID: 4813379849663366097, guid: 9f346096cf80fff4f887e066198d7753, type: 3}
 --- !u!4 &1737563826 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 24da377c6bd969640a59c24b4b9eea3d, type: 3}
