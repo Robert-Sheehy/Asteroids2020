@@ -16,6 +16,7 @@ public class ShipControlFaun : MonoBehaviour
     CubeControl theCube;
     CameraControl myCamera;
     public GameObject missile_clone_template;
+    Boolean MissileFireLR;
 
     // Start is called before the first frame update
     void Start()
@@ -54,11 +55,13 @@ public class ShipControlFaun : MonoBehaviour
             acceleration += spaceship_thrust_value * transform.forward;
         acceleration -= drag_constant * velocity;
 
-        // Faun Schutz - changed controls for missiles firing to two separate buttons
-        if (Input.GetKeyDown(KeyCode.R))
-            fire_MissileRight();
-        if (Input.GetKeyDown(KeyCode.E))
-            fire_MissileLeft();
+        // Faun Schutz - changed controls for missiles firing 
+        if (Input.GetKeyDown(KeyCode.F))
+            fire_Missile();
+        //if (Input.GetKeyDown(KeyCode.R))
+        //    fire_MissileRight();
+        //if (Input.GetKeyDown(KeyCode.E))
+        //    fire_MissileLeft();
 
 
         velocity += acceleration * Time.deltaTime;
@@ -72,6 +75,19 @@ public class ShipControlFaun : MonoBehaviour
     }
 
     // Faun Schutz - changed controls for missiles firing
+    private void fire_Missile()
+    {
+        if (MissileFireLR == true)
+        {
+            FireMissileFrom(right_wing_spawn);
+            MissileFireLR = false;
+        }
+        if (MissileFireLR == false)
+        {
+            FireMissileFrom(left_wing_spawn);
+            MissileFireLR = true;
+        }
+    }
     private void fire_MissileRight()
     {
         FireMissileFrom(right_wing_spawn);
