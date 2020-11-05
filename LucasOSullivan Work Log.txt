@@ -10,3 +10,4 @@ Provide text for:
 2. Load-screens
 3. Heads-Up Display
 4. Hints
+5.etc.
