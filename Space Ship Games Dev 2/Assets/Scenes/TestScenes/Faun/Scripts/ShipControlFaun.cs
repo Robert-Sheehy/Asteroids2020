@@ -3,12 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipControl : MonoBehaviour
+public class ShipControlFaun : MonoBehaviour
 {
     Vector3 left_wing_spawn = new Vector3(-4.5f, -1.25f, -1.75f);
     Vector3 right_wing_spawn = new Vector3(4.5f, -1.25f, -1.75f);
     float rotationSpeed = 180; // Rotation spped in degrees pre second
-    Vector3 velocity = new Vector3(0,0,0);
+    Vector3 velocity = new Vector3(0, 0, 0);
     Vector3 acceleration = new Vector3(0, 0, 0);
     private float spaceship_thrust_value = 10;
     private float gravity = 4;
@@ -29,29 +29,29 @@ public class ShipControl : MonoBehaviour
     {
         acceleration = Vector3.zero;
         // acceleration += gravity * Vector3.down;
-        Debug.DrawRay(transform.position, 50* transform.forward);
+        Debug.DrawRay(transform.position, 50 * transform.forward);
         Debug.DrawLine(transform.position, theCube.transform.position);
         Vector3 spaceship_to_cube = theCube.transform.position - transform.position;
 
         if ((Vector3.Dot(spaceship_to_cube, transform.forward) / (spaceship_to_cube.magnitude * transform.forward.magnitude)) > 0.8f)
-            //print("Locking On");
-        //else
-            //print("Cannot Lock on");
-       // print((Vector3.Dot(spaceship_to_cube, transform.forward)/(spaceship_to_cube.magnitude * transform.forward.magnitude)));
+            print("Locking On");
+        else
+            print("Cannot Lock on");
+        // print((Vector3.Dot(spaceship_to_cube, transform.forward)/(spaceship_to_cube.magnitude * transform.forward.magnitude)));
 
-        if ( Input.GetKey(KeyCode.LeftArrow))
-        transform.Rotate(Vector3.forward, rotationSpeed*Time.deltaTime);
+        if (Input.GetKey(KeyCode.LeftArrow))
+            transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
         if (Input.GetKey(KeyCode.RightArrow))
             transform.Rotate(Vector3.forward, -rotationSpeed * Time.deltaTime);
 
-       
-       if (Input.GetKey(KeyCode.UpArrow))
-                    transform.Rotate(Vector3.right, rotationSpeed * Time.deltaTime);
-       if (Input.GetKey(KeyCode.DownArrow))
-                    transform.Rotate(Vector3.right, -rotationSpeed * Time.deltaTime);
+
+        if (Input.GetKey(KeyCode.UpArrow))
+            transform.Rotate(Vector3.right, rotationSpeed * Time.deltaTime);
+        if (Input.GetKey(KeyCode.DownArrow))
+            transform.Rotate(Vector3.right, -rotationSpeed * Time.deltaTime);
 
         if (Input.GetKey(KeyCode.Space))
-            acceleration += spaceship_thrust_value *  transform.forward;
+            acceleration += spaceship_thrust_value * transform.forward;
         acceleration -= drag_constant * velocity;
 
         // Faun Schutz - changed controls for missiles firing to two separate buttons
@@ -66,7 +66,7 @@ public class ShipControl : MonoBehaviour
 
 
         myCamera.updatePosition(transform);
-      
+
 
 
     }
@@ -84,7 +84,7 @@ public class ShipControl : MonoBehaviour
     private void FireMissileFrom(Vector3 local_position)
     {
         GameObject missileGO = Instantiate(missile_clone_template, world_position_from_local(local_position), transform.rotation);
-        MissileControl newMissile = missileGO.GetComponent<MissileControl>();
+        MissileControlFaun newMissile = missileGO.GetComponent<MissileControlFaun>();
         newMissile.setStartVelocity(velocity);
     }
 
