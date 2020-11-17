@@ -24,7 +24,7 @@ public class Asteroid_Control : MonoBehaviour
     {
         transform.Rotate(axis_od_rotation, speed_of_rotation * Time.deltaTime);
         transform.position += velocity * Time.deltaTime;
-        the_manager.Ive_been_destroyed(this);
+        //the_manager.Ive_been_destroyed(this);
         
     }
 
