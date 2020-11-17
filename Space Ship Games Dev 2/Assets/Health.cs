@@ -8,10 +8,12 @@ public class Health : MonoBehaviour
     TextMeshPro ourHealthDisplay;
     internal int health = 100;
     bool isDisplayed = true;
+    Asteroid_Control my_asteroid;
     //TMPro Text health_Display;
     // Start is called before the first frame update
     void Start()
     {
+        my_asteroid = gameObject.GetComponent<Asteroid_Control>();
         GameObject newGO = new GameObject("Health Text");
         newGO.transform.parent = transform;
         ourHealthDisplay = newGO.AddComponent<TextMeshPro>();
@@ -37,8 +39,8 @@ public class Health : MonoBehaviour
         health += adjustment;
         ourHealthDisplay.enabled = true;
         ourHealthDisplay.text = health.ToString();
-      //   health_Display.Text = health.ToString();
-        if (health<0)
-        Destroy(gameObject);
+        //   health_Display.Text = health.ToString();
+        if (health < 0)
+            my_asteroid.destroy_game_object();
     }
 }

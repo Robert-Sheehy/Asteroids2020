@@ -82,7 +82,7 @@ void fire_laser()
   if (Physics.Raycast(laser, out hit))
   {
     Health objectHealth = hit.collider.gameObject.GetComponent<Health>();
-    if (objectHealth) objectHealth.adjust_health(-1);
+    if (objectHealth) objectHealth.adjust_health(-100);
   
   print("Laser Hit");
   }
