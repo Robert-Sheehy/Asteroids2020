@@ -17,6 +17,7 @@ Create an asteroids script :
 -Destroying a big asteroid grant the player XX points
 -Destroying a small asteroid grant the player XX points
 
+
 More Ideas :
 -Average speed of the asteroids increases with the timer/with the points earned
 -Spawning rate increases the same way
