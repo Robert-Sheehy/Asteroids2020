@@ -17,11 +17,19 @@ public class ShipControl : MonoBehaviour
     CameraControl myCamera;
     public GameObject missile_clone_template;
 
+
+
+
+    Manager_Script the_manager;
+
+    Asteroid_Control current_locked_on;
+
     // Start is called before the first frame update
     void Start()
     {
    //     theCube = FindObjectOfType<CubeControl>();
         myCamera = Camera.main.GetComponent<CameraControl>();
+        the_manager  = FindObjectOfType<Manager_Script>();
     }
 
     // Update is called once per frame
@@ -62,6 +70,9 @@ public class ShipControl : MonoBehaviour
 
         if (Input.GetKey(KeyCode.L))
         fire_laser();
+
+        if (Input.GetKeyDown(KeyCode.P)) 
+             current_locked_on = the_manager.get_me_any_asteroid(this);
 
 
         velocity += acceleration * Time.deltaTime;

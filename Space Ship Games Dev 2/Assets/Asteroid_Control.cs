@@ -28,11 +28,9 @@ public class Asteroid_Control : MonoBehaviour
 
         transform.Rotate(axis_od_rotation, speed_of_rotation * Time.deltaTime);
         transform.position += velocity * Time.deltaTime;
-      
-
-        //if health<=0
 
         Health objectHealth = this.gameObject.GetComponent<Health>();
+
         
         if (objectHealth.health <= 0)
             destroy_game_object();
