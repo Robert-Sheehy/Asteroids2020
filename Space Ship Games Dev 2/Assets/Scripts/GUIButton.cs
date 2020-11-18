@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GUIButton : MonoBehaviour
+
+
 {
+
+    Health the_object_we_wish_to_change;
     // Start is called before the first frame update
     void Start()
     {
-        
+        the_object_we_wish_to_change = FindObjectOfType<Health>();
     }
 
     // Update is called once per frame
@@ -16,8 +20,8 @@ public class GUIButton : MonoBehaviour
         
     }
       void OnGUI(){
-        if (GUI.Button (new Rect(0,0,80,20),"Menu")){
-            print("You clicked the menu button");
+        if (GUI.Button (new Rect(0,0,80,20),"Reset Health")){
+           the_object_we_wish_to_change. adjust_health(50);
         //transfer to main menu sceen
         //nameofSceen.SetActive();
         }
