@@ -11,3 +11,30 @@ Ideas for next step in astroids game.
 2. have astroids move randomly through the world
 3. create a border for the world
 4. shooting
+5. done
+
+20/10/2020
+	GUI Button will:
+	Activate Power up, Pause, main menu/quit
+
+	Power up-
+		*updates when empty and power up colected
+		      *when colides with power up show symble of which one is active
+          
+		
+		*empties when power up used
+
+	Pause
+		* Pauses game
+		      show pause menu UI &  Time.timeScale=0;
+		* If paused press will resume
+		      resume time and deactivate pause menu
+
+	Main menue
+		* returns to main menu after confermation message
+		    *Scene transition
+		* on death show score then transition to main menu
+	
+   
+
+  

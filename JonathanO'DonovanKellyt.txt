@@ -5,4 +5,8 @@ Jonathan O'Donovan Kelly T00210373
 20/10/20 My 3 game suggestions are:
 1. Have it have a level up system where it can improve it's speed, fire rate and damge the weapons do.
 2. Have planets with different levels of gravity.
-3. Have quests where you can deliver cargo and upgrade ship parts/
+3. Have quests where you can deliver cargo and upgrade ship parts
+
+21/10/2020:
+My Part is to make a laser for the spaceship, I believe that lasers should be a damage over time as opposed to shooting little lasers
+so I think the laser should follow the cursor and damage the durability of the asteroid which could also potentially be upgraded.
