@@ -1,14 +1,16 @@
-Team 1  John Power, Dylan Peevers, Pierre Grange
+
+Team 1 Room 1 John Power, Dylan Peevers, Pierre Grange
 Asteroids.
 	create and test method to destroy asteroid
-	Add Explosion
+	Add Explosion  (Pierre)
 	ask manager to spawn two more smaller asteroids
 	add method to manager to spawn two more smaller, faster asteroids with appropriate position and speed
 	Add method to manager to see if all asteroids are destroyed
 	add method to manager which moves asteroids which are too far away from spaceship to opposite position 
 	
 	
-Team 2
+
+Team 2 Room 2  Lucas O Sullivan Faun Schutz
 Lock On
 	Initial lock (ie find asteroid for initial lock, ask manager??)
 	start timer
