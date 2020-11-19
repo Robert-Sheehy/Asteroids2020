@@ -5,4 +5,4 @@ Created Work log,attempting to upload to main Repo.
 Suggestions for Space game:
 1.Enemies that the player can fight.
 2.Health or damage and make the player die.
-3.Collectables such as healthkits or damage multipliers.
+3.Collectables such as healthkits or damage multipliers.!

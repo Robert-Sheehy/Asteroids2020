@@ -9,5 +9,3 @@ Attempting to upload worklog to shared repository
 1 Swap to the unreal engine
 2 Add microtransactions
 3 Add space ship skins to sell to the whales
-
-Display text in world 3d
