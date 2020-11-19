@@ -6,7 +6,7 @@ using UnityEngine;
 public class Asteroid_Control : MonoBehaviour
 
 {
-
+    Renderer render;
     float WORLD_DIMENSION = 50;
 
 
@@ -17,7 +17,7 @@ public class Asteroid_Control : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+        render = GetComponentInChildren<Renderer>();
         speed_of_rotation = 18f;
   
 
@@ -74,5 +74,10 @@ public class Asteroid_Control : MonoBehaviour
         velocity.Normalize();
         velocity *= speed;
         transform.localScale = UnityEngine.Random.Range(0.5f, 3.0f) * Vector3.one;
+    }
+
+    internal void you_are_selected()
+    {
+        render.material.color = Color.red;
     }
 }
