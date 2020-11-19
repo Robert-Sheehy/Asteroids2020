@@ -7,6 +7,7 @@ public class Manager_Script : MonoBehaviour
 {
 
 
+
     List<Asteroid_Control> asteroids;
 
     int currently_selected_asterois_index = 0;
@@ -14,9 +15,11 @@ public class Manager_Script : MonoBehaviour
     int number_od_asteroids = 10;
 
 
+
     public GameObject asteroid_clone_template;
     // Start is called before the first frame update
     void Start()
+
 
     {   asteroids = new List<Asteroid_Control>();
 
@@ -118,6 +121,7 @@ public class Manager_Script : MonoBehaviour
       
         // }
      return null;
+
     }
 
     // Update is called once per frame

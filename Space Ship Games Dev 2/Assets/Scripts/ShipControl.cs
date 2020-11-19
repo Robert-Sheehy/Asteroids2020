@@ -71,8 +71,10 @@ public class ShipControl : MonoBehaviour
         if (Input.GetKey(KeyCode.L))
         fire_laser();
 
+
         if (Input.GetKeyDown(KeyCode.P)) 
              current_locked_on = the_manager.get_me_any_asteroid(this);
+
 
 
         velocity += acceleration * Time.deltaTime;
@@ -93,7 +95,9 @@ void fire_laser()
   if (Physics.Raycast(laser, out hit))
   {
     Health objectHealth = hit.collider.gameObject.GetComponent<Health>();
+
     if (objectHealth) objectHealth.adjust_health(-100);
+
   
   print("Laser Hit");
   }

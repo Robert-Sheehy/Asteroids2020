@@ -1,3 +1,4 @@
+
 Team 1 Room 1 John Power, Dylan Peevers, Pierre Grange
 Asteroids.
 	create and test method to destroy asteroid
@@ -8,6 +9,7 @@ Asteroids.
 	add method to manager which moves asteroids which are too far away from spaceship to opposite position 
 	
 	
+
 Team 2 Room 2  Lucas O Sullivan Faun Schutz
 Lock On
 	Initial lock (ie find asteroid for initial lock, ask manager??)
