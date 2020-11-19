@@ -24,6 +24,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3670425d88d721b4594042971b278f0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &2826609869626493115
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5157121008814341711}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 8.61
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &5157121008814485055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -109,6 +122,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: fa49e460baf435b4780da7196c2ab473, type: 3}
 --- !u!1 &5157121008814341711 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 151664, guid: fa49e460baf435b4780da7196c2ab473, type: 3}
+  m_CorrespondingSourceObject: {fileID: 151664, guid: fa49e460baf435b4780da7196c2ab473,
+    type: 3}
   m_PrefabInstance: {fileID: 5157121008814485055}
   m_PrefabAsset: {fileID: 0}
