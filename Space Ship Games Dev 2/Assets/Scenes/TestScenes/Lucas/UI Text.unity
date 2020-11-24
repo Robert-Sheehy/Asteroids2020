@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 101176898}
   - component: {fileID: 101176897}
   m_Layer: 5
-  m_Name: Time Int
+  m_Name: Time Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -498,6 +498,7 @@ GameObject:
   - component: {fileID: 998619397}
   - component: {fileID: 998619396}
   - component: {fileID: 998619399}
+  - component: {fileID: 998619400}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -591,6 +592,19 @@ MonoBehaviour:
   minimumY: -60
   maximumY: 60
   frameCounter: 20
+--- !u!114 &998619400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998619395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ada387db9ceb4d46b57a59745795b89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerFloat: {fileID: 101176897}
 --- !u!1 &1100814228
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,7 +875,7 @@ GameObject:
   - component: {fileID: 1183468803}
   - component: {fileID: 1183468802}
   m_Layer: 5
-  m_Name: Score Int
+  m_Name: Score Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1516,7 +1530,7 @@ GameObject:
   - component: {fileID: 1916712724}
   - component: {fileID: 1916712723}
   m_Layer: 5
-  m_Name: Health Int
+  m_Name: Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
