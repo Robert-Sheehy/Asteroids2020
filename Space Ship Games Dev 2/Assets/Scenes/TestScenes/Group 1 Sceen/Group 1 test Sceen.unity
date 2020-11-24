@@ -234,7 +234,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!4 &1161890373 stripped
 Transform:
+
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 24da377c6bd969640a59c24b4b9eea3d, type: 3}
+
   m_PrefabInstance: {fileID: 1803509417}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1563038141
@@ -324,7 +326,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df245b9dd17fc5849b1b7a7612ca06c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+
   asteroid_clone_template: {fileID: 5157121008814341711, guid: b1091e8bf5ba147499c77808eed6fdab, type: 3}
+
 --- !u!4 &1690825446
 Transform:
   m_ObjectHideFlags: 0
@@ -391,6 +395,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 24da377c6bd969640a59c24b4b9eea3d, type: 3}
+
       propertyPath: m_Name
       value: p1_wedge
       objectReference: {fileID: 0}
