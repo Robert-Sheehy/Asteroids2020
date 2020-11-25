@@ -12,11 +12,13 @@ public class Manager_Script : MonoBehaviour
 
     int currently_selected_asterois_index = 0;
 
-    int number_od_asteroids = 10;
+    int number_od_asteroids = 1;
 
 
 
     public GameObject asteroid_clone_template;
+    private float MAX_LOC_ON_DISTANCE = 300f;
+
     // Start is called before the first frame update
     void Start()
 
@@ -41,12 +43,32 @@ public class Manager_Script : MonoBehaviour
         return new_asteroid_script;
     }
 
-    
+    //test
+    private Asteroid_Control spawnNewAsteroid(Asteroid_Control asteroid_Control)
+    {
+        GameObject new_asteroid = Instantiate(asteroid_clone_template);
 
+        Asteroid_Control new_asteroid_script = new_asteroid.GetComponent<Asteroid_Control>();
+        new_asteroid_script.I_am_the_Manager(this);
+        new_asteroid_script.parents_position_and_rotation(asteroid_Control);
+        return new_asteroid_script;
+    }
+
+
+    //test
+    public ParticleSystem big_bada_boom;
+    
+    
 
 
     internal void Ive_been_destroyed(Asteroid_Control asteroid_Control)
     {
+        ParticleSystem explosion = Instantiate(big_bada_boom);
+        explosion.transform.position=asteroid_Control.transform.position;
+        explosion.Play();
+        
+
+
         // remove from list asteroids;
         print(asteroids.Count);
         asteroids.Remove(asteroid_Control);
@@ -57,14 +79,20 @@ public class Manager_Script : MonoBehaviour
         // check to see if asteroid big enough to split
 
         // spawn 2 new (smaller) asteroids
-
+        
+        for (int i = 0; i < 2; i++)
+        {
+            asteroids.Add(spawnNewAsteroid(asteroid_Control));
+        }
+        
+        
         /*
         Asteroid_Control new_asteroid_script = new_asteroid.GetComponent<Asteroid_Control>();
         new_asteroid_script.I_am_the_Manager(this);
         new_asteroid_script.set_to_random_position_and_rotation();
         return new_asteroid_script;
         */
-        
+
         // Add new asteroids to list asteroids
 
     }
@@ -83,45 +111,54 @@ public class Manager_Script : MonoBehaviour
     internal Asteroid_Control get_me_any_asteroid(ShipControl ship)
     {
         currently_selected_asterois_index++;
-    int starting_index = currently_selected_asterois_index;
-    bool finished = false;
+        int starting_index = currently_selected_asterois_index;
+        bool finished = false;
 
         while(!finished)
         {
-        Vector3 spaceship_to_asteriod = asteroids[currently_selected_asterois_index].transform.position - ship.transform.position;
-        if ((Vector3.Dot(ship.transform.forward,spaceship_to_asteriod)/(spaceship_to_asteriod.magnitude)) >0.8f)
+            // Vector3 spaceship_to_asteriod = asteroids[currently_selected_asterois_index].transform.position - ship.transform.position;
+            if (CanLockOn(ship, asteroids[currently_selected_asterois_index]))
             {
-        Debug.DrawLine(ship.transform.position, 50* ship.transform.forward);
+                Debug.DrawLine(ship.transform.position, 50 * ship.transform.forward);
 
-        Debug.DrawLine(ship.transform.position, spaceship_to_asteriod, Color.red, 5.0f);
-        finished = true;
-        return asteroids[currently_selected_asterois_index];
-            }
-        else{
-
-        
-            currently_selected_asterois_index++;
-            if (currently_selected_asterois_index >= asteroids.Count)
-                currently_selected_asterois_index = 0;
-
-            if (currently_selected_asterois_index == starting_index)
-            {
+                //Debug.DrawLine(ship.transform.position, spaceship_to_asteriod, Color.red, 5.0f);
                 finished = true;
-                return null;
+                asteroids[currently_selected_asterois_index].you_are_selected();
+                return asteroids[currently_selected_asterois_index];
             }
+            else
+            {
+
+
+                currently_selected_asterois_index++;
+                if (currently_selected_asterois_index >= asteroids.Count)
+                    currently_selected_asterois_index = 0;
+
+                if (currently_selected_asterois_index == starting_index)
+                {
+                    finished = true;
+                    return null;
+                }
+            }
+
         }
-        
-        }
-       
-         
-        
+
+
+
         // for(int i = 0; i < number_od_asteroids; i++)
         // {
         //     currently_selected_asterois_index++;
-      
-        // }
-     return null;
 
+        // }
+        return null;
+
+    }
+
+    private bool CanLockOn(ShipControl ship, Asteroid_Control asteroid)
+    {
+        Vector3 spaceship_to_asteriod = asteroid.transform.position - ship.transform.position;
+        return ((Vector3.Dot(ship.transform.forward, spaceship_to_asteriod) / (spaceship_to_asteriod.magnitude)) > 0.8f) 
+               && (Vector3.Distance(ship.transform.position,asteroid.transform.position) <  MAX_LOC_ON_DISTANCE);
     }
 
     // Update is called once per frame
