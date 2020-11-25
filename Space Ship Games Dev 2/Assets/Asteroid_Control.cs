@@ -17,7 +17,7 @@ public class Asteroid_Control : MonoBehaviour
         }
     }
 
-    Vector3 velocity, axis_od_rotation;
+    internal Vector3 velocity, axis_od_rotation;
     float speed_of_rotation;
     float speed = 10;
     Manager_Script the_manager;
@@ -94,13 +94,14 @@ public class Asteroid_Control : MonoBehaviour
         Astroid_Level = 3;
     }
 
-    internal void parents_position_and_rotation(Asteroid_Control asteroid_Control)
+    internal void spawn_children_o_parent_asteroid(Asteroid_Control asteroid_Control)
     {
 
         transform.position = asteroid_Control.transform.position;
         axis_od_rotation = new Vector3(UnityEngine.Random.Range(-1000.0f, 1000.0f), UnityEngine.Random.Range(-1000.0f, 1000.0f), UnityEngine.Random.Range(-1000.0f, 1000.0f));
         axis_od_rotation.Normalize();
         velocity = new Vector3(UnityEngine.Random.Range(-1000.0f, 1000.0f), UnityEngine.Random.Range(-1000.0f, 1000.0f), UnityEngine.Random.Range(-1000.0f, 1000.0f));
+        
         velocity.Normalize();
         velocity *= speed;
        
