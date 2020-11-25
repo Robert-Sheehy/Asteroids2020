@@ -11,7 +11,9 @@ public class Manager_Script : MonoBehaviour
 
     int currently_selected_asterois_index = 0;
 
+
     int max_distance=80;
+
 
     int number_od_asteroids = 6;
 
