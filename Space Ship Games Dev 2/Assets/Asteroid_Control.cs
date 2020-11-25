@@ -21,6 +21,8 @@ public class Asteroid_Control : MonoBehaviour
     float speed_of_rotation;
     float speed = 10;
     Manager_Script the_manager;
+    private bool is_selected;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +36,14 @@ public class Asteroid_Control : MonoBehaviour
     void Update()
     {
 
+        if (is_selected)
+
+            render.material.color = new Color(UnityEngine.Random.Range(0, 1),
+                                                UnityEngine.Random.Range(0, 1),
+                                                UnityEngine.Random.Range(0, 1), 
+                                                UnityEngine.Random.Range(0, 1));
+        else
+            render.material.color = Color.white;
 
 
         transform.Rotate(axis_od_rotation, speed_of_rotation * Time.deltaTime);
@@ -100,7 +110,8 @@ public class Asteroid_Control : MonoBehaviour
 
     internal void you_are_selected()
     {
-        render.material.color = Color.red;
+        is_selected = true;
+       
     }
 
 }
