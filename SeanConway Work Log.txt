@@ -6,3 +6,12 @@ Suggestions for Space game:
 1.Enemies that the player can fight.
 2.Health or damage and make the player die.
 3.Collectables such as healthkits or damage multipliers.!
+
+20/10/2020
+Assigned to timer class.
+
+Timer class will: 
+1.display time
+2.count down
+3.warn when time is up 
+4.stop game when timer reaches zero.

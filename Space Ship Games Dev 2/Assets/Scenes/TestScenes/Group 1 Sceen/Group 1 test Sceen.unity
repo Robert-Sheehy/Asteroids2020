@@ -218,7 +218,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &285206898
 MonoBehaviour:
@@ -232,12 +232,42 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac790222e9f6a0346a27ffd94666f671, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1161890373 stripped
+--- !u!4 &895206410 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 24da377c6bd969640a59c24b4b9eea3d,
     type: 3}
   m_PrefabInstance: {fileID: 1803509417}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &954747002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1161890373}
+  m_Layer: 0
+  m_Name: Recovery GameObject (1161890373)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1161890373
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 954747002}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1563038141
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,9 +311,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1161890373}
+  - {fileID: 895206410}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1563038144
 MonoBehaviour:
@@ -328,6 +358,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   asteroid_clone_template: {fileID: 5157121008814341711, guid: b1091e8bf5ba147499c77808eed6fdab,
     type: 3}
+  big_bada_boom: {fileID: 4315073119878422755, guid: 00b12145a8dcc5f4f9d907f7bff313af,
+    type: 3}
 --- !u!4 &1690825446
 Transform:
   m_ObjectHideFlags: 0
@@ -340,7 +372,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1803509417
 PrefabInstance:
@@ -406,8 +438,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 24da377c6bd969640a59c24b4b9eea3d,
         type: 3}
-      propertyPath: m_Name
-      value: p1_wedge
+      propertyPath: 
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24da377c6bd969640a59c24b4b9eea3d, type: 3}
@@ -501,5 +533,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
