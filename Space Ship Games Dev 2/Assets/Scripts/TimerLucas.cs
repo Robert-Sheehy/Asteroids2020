@@ -23,9 +23,8 @@ public class TimerLucas : MonoBehaviour
     void Update()
     {
         float t = Time.time - gameTime;
-
-        string hours  = ((int) t / 3600).ToString("f0");
-        string minutes      = (t / 60).ToString("f0");
+        string hours = ((int)t / 3600).ToString("f0");
+        string minutes = ((int)t / 60).ToString("f0");
         string seconds      = (t % 60).ToString("f3");
         timerFloat.text = hours + ":" + minutes + ":" + seconds;
             
