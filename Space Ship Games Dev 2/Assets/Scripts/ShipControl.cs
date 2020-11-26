@@ -133,6 +133,9 @@ public class ShipControl : MonoBehaviour
             }
 
         }
+
+     
+
         // Faun Schutz - changed controls for missiles firing
          void fire_MissileRight()
         {
@@ -150,9 +153,13 @@ public class ShipControl : MonoBehaviour
             newMissile.setStartVelocity(velocity);
         }
 
+      
+
          Vector3 world_position_from_local(Vector3 local_vector)
         {
             return transform.position + local_vector.x * transform.right + local_vector.y * transform.up + local_vector.z * transform.forward;
         }
+
     
 }
+
