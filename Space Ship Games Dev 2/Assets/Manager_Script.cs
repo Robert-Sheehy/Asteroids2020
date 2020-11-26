@@ -15,7 +15,7 @@ public class Manager_Script : MonoBehaviour
     int max_distance=80;
 
 
-    int number_od_asteroids = 6;
+    int number_od_asteroids = 10;
 
     public GameObject asteroid_clone_template;
     private float MAX_LOC_ON_DISTANCE = 300f;
@@ -145,7 +145,7 @@ public class Manager_Script : MonoBehaviour
         {
             Vector3 spaceship_to_asteroid = asteroid.transform.position - players_ship.transform.position;
 
-            if (spaceship_to_asteroid.y > max_distance|| spaceship_to_asteroid.x > max_distance|| spaceship_to_asteroid.z > max_distance)
+            if (spaceship_to_asteroid.magnitude > max_distance)
             {
                 asteroid.transform.position = (players_ship.transform.position - (spaceship_to_asteroid*.9f));
                 
