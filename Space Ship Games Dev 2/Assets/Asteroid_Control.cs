@@ -16,7 +16,7 @@ public class Asteroid_Control : MonoBehaviour
 
         }
     }
-
+    Health objectHealth;
     internal Vector3 velocity, axis_od_rotation;
     float speed_of_rotation;
     float speed = 10;
@@ -49,7 +49,7 @@ public class Asteroid_Control : MonoBehaviour
         transform.Rotate(axis_od_rotation, speed_of_rotation * Time.deltaTime);
         transform.position += velocity * Time.deltaTime;
 
-        Health objectHealth = this.gameObject.GetComponent<Health>();
+        objectHealth = this.gameObject.GetComponent<Health>();
 
         
         if (objectHealth.health <= 0)
@@ -108,10 +108,18 @@ public class Asteroid_Control : MonoBehaviour
         transform.localScale=(new Vector3(.5f, .5f, .5f));
     }
 
+    internal void disselect()
+    {
+        objectHealth.Lock_off();
+    }
 
     internal void you_are_selected()
     {
         is_selected = true;
+
+        objectHealth.Lock_on();
+
+        
        
     }
 

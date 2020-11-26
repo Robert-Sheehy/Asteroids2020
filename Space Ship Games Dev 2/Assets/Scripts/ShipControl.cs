@@ -25,7 +25,6 @@ public class ShipControl : MonoBehaviour
     Asteroid_Control current_locked_on;
     private bool is_aquiring_lock;
     private Timer lock_timer;
-    private bool lockon_Aquired;
 
     // Start is called before the first frame update
     void Start()
@@ -63,7 +62,7 @@ public class ShipControl : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Space))
             acceleration += spaceship_thrust_value * transform.forward;
-        acceleration -= drag_constant * velocity;
+            acceleration -= drag_constant * velocity;
 
         // Faun Schutz - changed controls for missiles firing to two separate buttons
         if (Input.GetKeyDown(KeyCode.R))
@@ -76,7 +75,12 @@ public class ShipControl : MonoBehaviour
 
 
         if (Input.GetKeyDown(KeyCode.P))
+        {
+            if(current_locked_on)
+                current_locked_on.disselect();
+
             current_locked_on = the_manager.get_me_any_asteroid(this);
+        }
 
         if (Input.GetKey(KeyCode.O))
         {
@@ -92,7 +96,7 @@ public class ShipControl : MonoBehaviour
                 if (lock_timer.current_time() < 0)
                 {
                     print("Lock-on Aquired");
-                    lockon_Aquired = true;
+
                 }
             }
             else
@@ -104,6 +108,7 @@ public class ShipControl : MonoBehaviour
 
                 }
             }
+        }
 
             velocity += acceleration * Time.deltaTime;
             transform.position += velocity * Time.deltaTime;
@@ -149,5 +154,5 @@ public class ShipControl : MonoBehaviour
         {
             return transform.position + local_vector.x * transform.right + local_vector.y * transform.up + local_vector.z * transform.forward;
         }
-    }
+    
 }
