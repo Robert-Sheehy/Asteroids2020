@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Manager_Script : MonoBehaviour
 {
-    ShipControl players_ship;
+    internal static ShipControl players_ship;
 
     List<Asteroid_Control> asteroids;
 
@@ -15,7 +15,7 @@ public class Manager_Script : MonoBehaviour
     int max_distance=80;
 
 
-    int number_od_asteroids = 6;
+    int number_od_asteroids = 10;
 
     public GameObject asteroid_clone_template;
     private float MAX_LOC_ON_DISTANCE = 300f;
@@ -91,17 +91,20 @@ public class Manager_Script : MonoBehaviour
     internal Asteroid_Control get_me_any_asteroid(ShipControl ship)
     {
         currently_selected_asterois_index++;
+        if (currently_selected_asterois_index >= asteroids.Count)
+            currently_selected_asterois_index = 0;
         int starting_index = currently_selected_asterois_index;
-        bool finished = false;
+      
 
-        while(!finished)
+        while(true)
         {
+        
             if (CanLockOn(ship, asteroids[currently_selected_asterois_index]))
             {
                 Debug.DrawLine(ship.transform.position, 50 * ship.transform.forward);
 
                 //Debug.DrawLine(ship.transform.position, spaceship_to_asteriod, Color.red, 5.0f);
-                finished = true;
+                
                 asteroids[currently_selected_asterois_index].you_are_selected();
                 return asteroids[currently_selected_asterois_index];
             }
@@ -113,7 +116,7 @@ public class Manager_Script : MonoBehaviour
 
                 if (currently_selected_asterois_index == starting_index)
                 {
-                    finished = true;
+                 
                     return null;
                 }
             }
@@ -122,7 +125,7 @@ public class Manager_Script : MonoBehaviour
         }
 
 
-        return null;
+       
 
     }
 
@@ -145,7 +148,7 @@ public class Manager_Script : MonoBehaviour
         {
             Vector3 spaceship_to_asteroid = asteroid.transform.position - players_ship.transform.position;
 
-            if (spaceship_to_asteroid.y > max_distance|| spaceship_to_asteroid.x > max_distance|| spaceship_to_asteroid.z > max_distance)
+            if (spaceship_to_asteroid.magnitude > max_distance)
             {
                 asteroid.transform.position = (players_ship.transform.position - (spaceship_to_asteroid*.9f));
                 

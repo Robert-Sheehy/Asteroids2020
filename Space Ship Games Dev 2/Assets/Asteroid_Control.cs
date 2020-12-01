@@ -12,10 +12,17 @@ public class Asteroid_Control : MonoBehaviour
     public int Astroid_Level{
         get {return astroid_level;}
         set {astroid_level = value;
-            transform.localScale = Mathf.Pow(2, astroid_level-3)*Vector3.one;
+            transform.localScale = Chosen_Scale*Mathf.Pow(2, astroid_level-3)*Vector3.one;
 
         }
     }
+
+    Health objectHealth;
+
+
+
+    float MAXSCALE = 2f, MINSCALE = 1f, Chosen_Scale;
+
 
     internal Vector3 velocity, axis_od_rotation;
     float speed_of_rotation;
@@ -49,7 +56,7 @@ public class Asteroid_Control : MonoBehaviour
         transform.Rotate(axis_od_rotation, speed_of_rotation * Time.deltaTime);
         transform.position += velocity * Time.deltaTime;
 
-        Health objectHealth = this.gameObject.GetComponent<Health>();
+        objectHealth = this.gameObject.GetComponent<Health>();
 
         
         if (objectHealth.health <= 0)
@@ -60,10 +67,6 @@ public class Asteroid_Control : MonoBehaviour
             objectHealth.health = 0;
 
 
-
-
-
-
     }
 
 
@@ -72,6 +75,21 @@ public class Asteroid_Control : MonoBehaviour
         the_manager.Ive_been_destroyed(this);
 
         GameObject.Destroy(this.gameObject);
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        MissileControl missile = collision.gameObject.GetComponentInParent<MissileControl>();
+        if (missile)
+        {
+            destroy_game_object();
+            Destroy(missile.gameObject);
+            Debug.Log("Boom");
+        }
+
+        else
+            Debug.Log("Not a missile");
+
     }
 
 
@@ -90,7 +108,7 @@ public class Asteroid_Control : MonoBehaviour
         velocity = new Vector3(UnityEngine.Random.Range(-1000.0f, 1000.0f), UnityEngine.Random.Range(-1000.0f, 1000.0f), UnityEngine.Random.Range(-1000.0f, 1000.0f));
         velocity.Normalize();
         velocity *= speed;
-        transform.localScale = UnityEngine.Random.Range(0.5f, 3.0f) * Vector3.one;
+       Chosen_Scale = UnityEngine.Random.Range(MINSCALE, MAXSCALE);
         Astroid_Level = 3;
     }
 
@@ -108,10 +126,18 @@ public class Asteroid_Control : MonoBehaviour
         transform.localScale=(new Vector3(.5f, .5f, .5f));
     }
 
+    internal void disselect()
+    {
+        objectHealth.Lock_off();
+    }
 
     internal void you_are_selected()
     {
         is_selected = true;
+
+        objectHealth.Lock_on();
+
+        
        
     }
 
