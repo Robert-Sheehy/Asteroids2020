@@ -93,9 +93,9 @@ public class ShipControl : MonoBehaviour
                 is_aquiring_lock = true;
                 print(lock_timer.current_time());
 
-                if (lock_timer.current_time() < 0)
+                if (lock_timer.current_time() <= 0)
                 {
-                    print("Lock-on Aquired");
+                    current_locked_on.lock_Acquired();
 
                 }
             }
