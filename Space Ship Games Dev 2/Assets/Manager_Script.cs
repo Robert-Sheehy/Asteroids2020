@@ -2,15 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Manager_Script : MonoBehaviour
 {
     internal static ShipControl players_ship;
-
+    //Text testText;
     List<Asteroid_Control> asteroids;
 
     int currently_selected_asterois_index = 0;
 
+    PutTextHere ScreenText;
 
     int max_distance=80;
 
@@ -22,7 +24,12 @@ public class Manager_Script : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
+
+
     {   asteroids = new List<Asteroid_Control>();
+        
+        ScreenText = FindObjectOfType<PutTextHere>();
+        
 
         for (int i = 0; i < number_od_asteroids; i++)
         {
@@ -143,6 +150,7 @@ public class Manager_Script : MonoBehaviour
     void Update()
     {
 
+        ScreenText.numberOfAsteroidsIs(asteroids.Count);
 
         foreach (Asteroid_Control asteroid in asteroids)
         {
