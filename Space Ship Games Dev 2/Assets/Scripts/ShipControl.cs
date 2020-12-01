@@ -8,7 +8,7 @@ public class ShipControl : MonoBehaviour
     Vector3 left_wing_spawn = new Vector3(-4.5f, -1.25f, -1.75f);
     Vector3 right_wing_spawn = new Vector3(4.5f, -1.25f, -1.75f);
     float rotationSpeed = 180; // Rotation spped in degrees pre second
-    Vector3 velocity = new Vector3(0,0,0);
+    Vector3 velocity = new Vector3(0, 0, 0);
     Vector3 acceleration = new Vector3(0, 0, 0);
     private float spaceship_thrust_value = 10;
     private float gravity = 4;
@@ -23,13 +23,15 @@ public class ShipControl : MonoBehaviour
     Manager_Script the_manager;
 
     Asteroid_Control current_locked_on;
+    private bool is_aquiring_lock;
+    private Timer lock_timer;
 
     // Start is called before the first frame update
     void Start()
     {
-   //     theCube = FindObjectOfType<CubeControl>();
+        //     theCube = FindObjectOfType<CubeControl>();
         myCamera = Camera.main.GetComponent<CameraControl>();
-        the_manager  = FindObjectOfType<Manager_Script>();
+        the_manager = FindObjectOfType<Manager_Script>();
     }
 
     // Update is called once per frame
@@ -37,30 +39,30 @@ public class ShipControl : MonoBehaviour
     {
         acceleration = Vector3.zero;
         // acceleration += gravity * Vector3.down;
-        Debug.DrawRay(transform.position, 50* transform.forward);
-       // Debug.DrawLine(transform.position, theCube.transform.position);
-      //  Vector3 spaceship_to_cube = theCube.transform.position - transform.position;
+        Debug.DrawRay(transform.position, 50 * transform.forward);
+        // Debug.DrawLine(transform.position, theCube.transform.position);
+        //  Vector3 spaceship_to_cube = theCube.transform.position - transform.position;
 
-      //  if ((Vector3.Dot(spaceship_to_cube, transform.forward) / (spaceship_to_cube.magnitude * transform.forward.magnitude)) > 0.8f)
-            //print("Locking On");
+        //  if ((Vector3.Dot(spaceship_to_cube, transform.forward) / (spaceship_to_cube.magnitude * transform.forward.magnitude)) > 0.8f)
+        //print("Locking On");
         //else
-            //print("Cannot Lock on");
-       // print((Vector3.Dot(spaceship_to_cube, transform.forward)/(spaceship_to_cube.magnitude * transform.forward.magnitude)));
+        //print("Cannot Lock on");
+        // print((Vector3.Dot(spaceship_to_cube, transform.forward)/(spaceship_to_cube.magnitude * transform.forward.magnitude)));
 
-        if ( Input.GetKey(KeyCode.LeftArrow))
-        transform.Rotate(Vector3.forward, rotationSpeed*Time.deltaTime);
+        if (Input.GetKey(KeyCode.LeftArrow))
+            transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
         if (Input.GetKey(KeyCode.RightArrow))
             transform.Rotate(Vector3.forward, -rotationSpeed * Time.deltaTime);
 
-       
-       if (Input.GetKey(KeyCode.UpArrow))
-                    transform.Rotate(Vector3.right, rotationSpeed * Time.deltaTime);
-       if (Input.GetKey(KeyCode.DownArrow))
-                    transform.Rotate(Vector3.right, -rotationSpeed * Time.deltaTime);
+
+        if (Input.GetKey(KeyCode.UpArrow))
+            transform.Rotate(Vector3.right, rotationSpeed * Time.deltaTime);
+        if (Input.GetKey(KeyCode.DownArrow))
+            transform.Rotate(Vector3.right, -rotationSpeed * Time.deltaTime);
 
         if (Input.GetKey(KeyCode.Space))
-            acceleration += spaceship_thrust_value *  transform.forward;
-        acceleration -= drag_constant * velocity;
+            acceleration += spaceship_thrust_value * transform.forward;
+            acceleration -= drag_constant * velocity;
 
         // Faun Schutz - changed controls for missiles firing to two separate buttons
         if (Input.GetKeyDown(KeyCode.R))
@@ -69,59 +71,95 @@ public class ShipControl : MonoBehaviour
             fire_MissileLeft();
 
         if (Input.GetKey(KeyCode.L))
-        fire_laser();
+            fire_laser();
 
 
-        if (Input.GetKeyDown(KeyCode.P)) 
-             current_locked_on = the_manager.get_me_any_asteroid(this);
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            if(current_locked_on)
+                current_locked_on.disselect();
+
+            current_locked_on = the_manager.get_me_any_asteroid(this);
+        }
+
+        if (Input.GetKey(KeyCode.O))
+        {
+            // Check to see if first time lock on, if so...
+            if (!is_aquiring_lock)
+            {
+                // Add Timer Compnent
+                lock_timer = gameObject.AddComponent<Timer>();
+                lock_timer.Timer_Setup(true, 4.0f);
+                is_aquiring_lock = true;
+                print(lock_timer.current_time());
+
+                if (lock_timer.current_time() < 0)
+                {
+                    print("Lock-on Aquired");
+
+                }
+            }
+            else
+            {
+                if (is_aquiring_lock)
+                {
+                    is_aquiring_lock = false;
+                    Destroy(lock_timer);
+
+                }
+            }
+        }
+
+            velocity += acceleration * Time.deltaTime;
+            transform.position += velocity * Time.deltaTime;
 
 
+            myCamera.updatePosition(transform);
+        }
 
-        velocity += acceleration * Time.deltaTime;
-        transform.position += velocity * Time.deltaTime;
+
+        void fire_laser()
+        {
+            Ray laser = new Ray(transform.position, transform.forward);
+            RaycastHit hit;
+            if (Physics.Raycast(laser, out hit))
+            {
+                Health objectHealth = hit.collider.gameObject.GetComponent<Health>();
+
+                if (objectHealth) objectHealth.adjust_health(-100);
 
 
-        myCamera.updatePosition(transform);
+                print("Laser Hit");
+            }
+
+        }
+
+     
+
+        // Faun Schutz - changed controls for missiles firing
+         void fire_MissileRight()
+        {
+            FireMissileFrom(right_wing_spawn);
+        }
+         void fire_MissileLeft()
+        {
+            FireMissileFrom(left_wing_spawn);
+        }
+
+         void FireMissileFrom(Vector3 local_position)
+        {
+            GameObject missileGO = Instantiate(missile_clone_template, world_position_from_local(local_position), transform.rotation);
+            MissileControl newMissile = missileGO.GetComponent<MissileControl>();
+            newMissile.setStartVelocity(velocity);
+        }
+
       
 
+         Vector3 world_position_from_local(Vector3 local_vector)
+        {
+            return transform.position + local_vector.x * transform.right + local_vector.y * transform.up + local_vector.z * transform.forward;
+        }
 
-    }
-
-
-void fire_laser()
-{
-  Ray laser = new Ray(transform.position, transform.forward);
-  RaycastHit hit;
-  if (Physics.Raycast(laser, out hit))
-  {
-    Health objectHealth = hit.collider.gameObject.GetComponent<Health>();
-
-    if (objectHealth) objectHealth.adjust_health(-100);
-
-  
-  print("Laser Hit");
-  }
-
+    
 }
-    // Faun Schutz - changed controls for missiles firing
-    private void fire_MissileRight()
-    {
-        FireMissileFrom(right_wing_spawn);
-    }
-    private void fire_MissileLeft()
-    {
-        FireMissileFrom(left_wing_spawn);
-    }
 
-    private void FireMissileFrom(Vector3 local_position)
-    {
-        GameObject missileGO = Instantiate(missile_clone_template, world_position_from_local(local_position), transform.rotation);
-        MissileControl newMissile = missileGO.GetComponent<MissileControl>();
-        newMissile.setStartVelocity(velocity);
-    }
-
-    private Vector3 world_position_from_local(Vector3 local_vector)
-    {
-        return transform.position + local_vector.x * transform.right + local_vector.y * transform.up + local_vector.z * transform.forward;
-    }
-}
