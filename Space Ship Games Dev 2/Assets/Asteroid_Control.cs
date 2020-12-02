@@ -141,4 +141,9 @@ public class Asteroid_Control : MonoBehaviour
        
     }
 
+    internal void lock_Acquired()
+    {
+        objectHealth.locked();
+    }
+
 }
