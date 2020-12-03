@@ -49,7 +49,7 @@ public class Health : MonoBehaviour
     internal void Lock_on()
     {
         ourHealthDisplay.text = "Aquiring Lock";
-        ourHealthDisplay.color = Color.orange;
+        ourHealthDisplay.color = Color.green;
     }
     internal void adjust_health(int adjustment)
     {
