@@ -134,8 +134,9 @@ GameObject:
   - component: {fileID: 101176896}
   - component: {fileID: 101176898}
   - component: {fileID: 101176897}
+  - component: {fileID: 101176899}
   m_Layer: 5
-  m_Name: Time Int
+  m_Name: Time Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -193,7 +194,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'HH:MM:SS:MIL
+  m_Text: 'HH:MM:SS.MIL
 
 
 '
@@ -205,6 +206,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 101176895}
   m_CullTransparentMesh: 0
+--- !u!114 &101176899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 101176895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ada387db9ceb4d46b57a59745795b89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerFloat: {fileID: 101176897}
 --- !u!1 &276435291
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +253,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 552, y: -228}
+  m_AnchoredPosition: {x: 450, y: -228}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &276435293
@@ -356,7 +370,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -452, y: -228}
+  m_AnchoredPosition: {x: -350, y: -228}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &659025007
@@ -498,6 +512,7 @@ GameObject:
   - component: {fileID: 998619397}
   - component: {fileID: 998619396}
   - component: {fileID: 998619399}
+  - component: {fileID: 998619400}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -591,6 +606,19 @@ MonoBehaviour:
   minimumY: -60
   maximumY: 60
   frameCounter: 20
+--- !u!114 &998619400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998619395}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ada387db9ceb4d46b57a59745795b89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerFloat: {fileID: 101176897}
 --- !u!1 &1100814228
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,7 +889,7 @@ GameObject:
   - component: {fileID: 1183468803}
   - component: {fileID: 1183468802}
   m_Layer: 5
-  m_Name: Score Int
+  m_Name: Score Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -883,7 +911,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 552, y: -253}
+  m_AnchoredPosition: {x: 450, y: -253}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1183468802
@@ -1516,7 +1544,7 @@ GameObject:
   - component: {fileID: 1916712724}
   - component: {fileID: 1916712723}
   m_Layer: 5
-  m_Name: Health Int
+  m_Name: Health Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1538,7 +1566,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -452, y: -253}
+  m_AnchoredPosition: {x: -350, y: -253}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1916712723
@@ -1574,7 +1602,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'XXX
+  m_Text: 'XXX%
 
 
 '
