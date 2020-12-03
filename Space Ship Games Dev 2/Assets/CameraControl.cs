@@ -30,6 +30,6 @@ public class CameraControl : MonoBehaviour
     internal void updatePosition(Transform transform_of_spaceship)
     {
         desired_destination = transform_of_spaceship.position - distance_behind * transform_of_spaceship.forward + distance_up * transform_of_spaceship.up;
-        desired_orientation =  Quaternion.LookRotation(transform_of_spaceship.position + cross_hair_distance * transform_of_spaceship.forward, transform_of_spaceship.up);
+        desired_orientation =  Quaternion.LookRotation((transform_of_spaceship.position + cross_hair_distance * transform_of_spaceship.forward).normalized, transform_of_spaceship.up);
     }
 }

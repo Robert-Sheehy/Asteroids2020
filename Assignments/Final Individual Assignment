@@ -1,0 +1,55 @@
+Create a folder, name it as Your Name, in the Individual Assignments Folder
+Duplicate the Scene template in the Individual Assignments Folder, (select scene, go to File/Duplicate
+Select a topic from the ones listed below
+Contact me to claim topic, either in class or by e-mail, I will confirm that topic is yours.
+Implement feature.
+Pull Request and confirm with me via e-mail
+It will be accepted or Adjust according to my instructions 
+Pick another topic repeat
+
+
+Topics/Features
+
+Menu, Start Game, Quit, etc.
+
+
+On Game Screen
+  Scoring
+  Lives
+  Shield
+  Remaining Asteroids
+  Warning
+  
+Laser
+  Crosshairs
+  Visualise laser(s)
+  Adjust damage
+
+Shield for spaceship
+Collision with asteroid
+
+
+Missile
+   Lock aquired timer
+   fire Missile
+   Guided Missile Control
+   
+
+  
+Sound
+  Remove listener on Minimap
+  Laser, Missile, Explosion, Asteroid Hit,
+
+Mini-Map Create a prefab with control script which locates it and makes spaceship its parent and allows feature control
+    Cull Asteroids, health scores
+    Make Minimap circular (mask)
+    Create icons prefab (sphere or such) which could be added to anything e.g. Asteroids  which only can be seen by minimap
+      Change display of icon based on whether above/below spaceship
+      Clip icon to edge of minimap when asteroid outside of view
+    
+    
+    
+    
+    
+    
+
