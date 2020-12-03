@@ -2,17 +2,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Manager_Script : MonoBehaviour
 {
     internal static ShipControl players_ship;
-
+    //Text testText;
     List<Asteroid_Control> asteroids;
 
     int currently_selected_asterois_index = 0;
 
+    PutTextHere ScreenText;
 
-    int max_distance=80;
+    int game_radius=1000;
 
 
     int number_od_asteroids = 10;
@@ -22,7 +24,12 @@ public class Manager_Script : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
+
+
     {   asteroids = new List<Asteroid_Control>();
+        
+        ScreenText = FindObjectOfType<PutTextHere>();
+        
 
         for (int i = 0; i < number_od_asteroids; i++)
         {
@@ -39,7 +46,7 @@ public class Manager_Script : MonoBehaviour
 
         Asteroid_Control new_asteroid_script = new_asteroid.GetComponent<Asteroid_Control>();
         new_asteroid_script.I_am_the_Manager(this);
-        new_asteroid_script.set_to_random_position_and_rotation();
+        new_asteroid_script.set_to_random_position_and_rotation(game_radius);
         return new_asteroid_script;
     }
 
@@ -143,12 +150,13 @@ public class Manager_Script : MonoBehaviour
     void Update()
     {
 
+        ScreenText.numberOfAsteroidsIs(asteroids.Count);
 
         foreach (Asteroid_Control asteroid in asteroids)
         {
             Vector3 spaceship_to_asteroid = asteroid.transform.position - players_ship.transform.position;
 
-            if (spaceship_to_asteroid.magnitude > max_distance)
+            if (spaceship_to_asteroid.magnitude > game_radius)
             {
                 asteroid.transform.position = (players_ship.transform.position - (spaceship_to_asteroid*.9f));
                 
