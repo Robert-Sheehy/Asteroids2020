@@ -14,7 +14,7 @@ public class Manager_Script : MonoBehaviour
 
     PutTextHere ScreenText;
 
-    int max_distance=80;
+    int game_radius=1000;
 
 
     int number_od_asteroids = 10;
@@ -46,7 +46,7 @@ public class Manager_Script : MonoBehaviour
 
         Asteroid_Control new_asteroid_script = new_asteroid.GetComponent<Asteroid_Control>();
         new_asteroid_script.I_am_the_Manager(this);
-        new_asteroid_script.set_to_random_position_and_rotation();
+        new_asteroid_script.set_to_random_position_and_rotation(game_radius);
         return new_asteroid_script;
     }
 
@@ -156,7 +156,7 @@ public class Manager_Script : MonoBehaviour
         {
             Vector3 spaceship_to_asteroid = asteroid.transform.position - players_ship.transform.position;
 
-            if (spaceship_to_asteroid.magnitude > max_distance)
+            if (spaceship_to_asteroid.magnitude > game_radius)
             {
                 asteroid.transform.position = (players_ship.transform.position - (spaceship_to_asteroid*.9f));
                 
