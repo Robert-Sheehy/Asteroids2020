@@ -38,7 +38,7 @@ Missile
   
 Sound
   Remove listener on Minimap
-  Laser, Missile, Explosion, Asteroid Hit,
+  Laser, Missile, Explosion, Asteroid Hit,  AC
 
 Mini-Map Create a prefab with control script which locates it and makes spaceship its parent and allows feature control
     Cull Asteroids, health scores
