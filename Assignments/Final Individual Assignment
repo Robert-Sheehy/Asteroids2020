@@ -16,13 +16,13 @@ Menu, Start Game, Quit, etc.  DS
 On Game Screen
   Scoring
   Lives
-  Shield
+  Shield     DP
   Remaining Asteroids
   Warning
   
 Laser
-  Crosshairs
-  Visualise laser(s)
+  Crosshairs       PG
+  Visualise laser(s) pg
   Adjust damage
 
 Shield for spaceship
