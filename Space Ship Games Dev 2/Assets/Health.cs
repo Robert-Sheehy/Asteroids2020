@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
     TextMeshPro ourHealthDisplay;
     internal int health = 100;
     bool isDisplayed = true;
+    internal int shipHealth = 3;
 
     Asteroid_Control my_asteroid;
 
@@ -49,7 +50,7 @@ public class Health : MonoBehaviour
     internal void Lock_on()
     {
         ourHealthDisplay.text = "Aquiring Lock";
-        ourHealthDisplay.color = Color.red;
+        ourHealthDisplay.color = Color.green;
     }
     internal void adjust_health(int adjustment)
     {
@@ -67,5 +68,11 @@ public class Health : MonoBehaviour
     {
         ourHealthDisplay.text = "";
         ourHealthDisplay.color = Color.white;
+    }
+
+    internal void locked()
+    {
+        ourHealthDisplay.text = "Lock Acquired";
+        ourHealthDisplay.color = Color.red;
     }
 }
