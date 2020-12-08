@@ -34,6 +34,7 @@ public class Asteroid_Control : MonoBehaviour
     void Start()
     {
         render = GetComponentInChildren<Renderer>();
+       // render.material.color = new Color(0, 0, 1, 0.5f);
         speed_of_rotation = 18f;
   
 
