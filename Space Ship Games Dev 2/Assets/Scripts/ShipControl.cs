@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ShipControl : MonoBehaviour
 {
+    Renderer render;
+
     Vector3 left_wing_spawn = new Vector3(-4.5f, -1.25f, -1.75f);
     Vector3 right_wing_spawn = new Vector3(4.5f, -1.25f, -1.75f);
     float rotationSpeed = 180; // Rotation spped in degrees pre second
@@ -17,8 +19,8 @@ public class ShipControl : MonoBehaviour
     CameraControl myCamera;
     public GameObject missile_clone_template;
 
-
-
+    GameObject shield3D;
+    Renderer shieldRender;
 
     Manager_Script the_manager;
 
@@ -29,9 +31,23 @@ public class ShipControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        shield3D = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        shield3D.transform.parent = transform;
+        shield3D.transform.localScale=10*Vector3.one;
+        shieldRender = shield3D.GetComponent<Renderer>();
+        
+        shieldRender.material.color= new Color(0, 0, 1, 0.5f);
+        shieldRender.material.shader = Shader.Find("Transparent/Diffuse");
+        
+
+
         //     theCube = FindObjectOfType<CubeControl>();
         myCamera = Camera.main.GetComponent<CameraControl>();
         the_manager = FindObjectOfType<Manager_Script>();
+
+
+
+
     }
 
     // Update is called once per frame
@@ -160,6 +176,20 @@ public class ShipControl : MonoBehaviour
             return transform.position + local_vector.x * transform.right + local_vector.y * transform.up + local_vector.z * transform.forward;
         }
 
-    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Asteroid_Control asteroid = collision.gameObject.GetComponent<Asteroid_Control>();
+
+        if (asteroid)
+        {
+            print("bang");
+            //registerHit(50);
+        }
+
+        
+    }
+
+
 }
 
