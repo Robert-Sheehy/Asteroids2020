@@ -118,21 +118,30 @@ public class ShipControl : MonoBehaviour
         }
 
 
-        void fire_laser()
+    public ParticleSystem pewpew;
+
+    void fire_laser()
+    {
+        /*
+        ParticleSystem Laser = Instantiate(pewpew);
+        Laser.transform.position = transform.position;
+        Laser.Play(); */
+
+        Ray laser = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+        
+        
+        
+        if (Physics.Raycast(laser, out hit))
         {
-            Ray laser = new Ray(transform.position, transform.forward);
-            RaycastHit hit;
-            if (Physics.Raycast(laser, out hit))
-            {
-                Health objectHealth = hit.collider.gameObject.GetComponent<Health>();
-
-                if (objectHealth) objectHealth.adjust_health(-100);
-
-
-                print("Laser Hit");
-            }
-
+            Health objectHealth = hit.collider.gameObject.GetComponent<Health>();
+            
+            if (objectHealth)
+                objectHealth.adjust_health(-100);
+            
+            print("Laser Hit"); 
         }
+    }
 
      
 
