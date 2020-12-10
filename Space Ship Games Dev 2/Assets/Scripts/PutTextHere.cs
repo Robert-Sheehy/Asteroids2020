@@ -17,7 +17,7 @@ public class PutTextHere : MonoBehaviour
         newGO.transform.SetParent(this.transform);
         Text myText = newGO.AddComponent<Text>();
         myText.text = "Ta-dah!";
-       
+
         //Manager_Script.FindObjectsOfType<List<Asteroid_Control>>
 
         testText = FindObjectOfType<Text>();
@@ -28,7 +28,7 @@ public class PutTextHere : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     internal void numberOfAsteroidsIs(int count)
