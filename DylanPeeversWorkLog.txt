@@ -1,3 +1,7 @@
 Dylan Peevers t00207317
 
-fdd
+8/12/2020
+
+created a shield that declares it 
+has been destroyed once it hits '0';
+

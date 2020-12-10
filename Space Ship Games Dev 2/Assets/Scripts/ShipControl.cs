@@ -18,11 +18,13 @@ public class ShipControl : MonoBehaviour
     CubeControl theCube;
     CameraControl myCamera;
     public GameObject missile_clone_template;
+    private int shield = 100;
 
     GameObject shield3D;
     Renderer shieldRender;
 
     Manager_Script the_manager;
+    Health health;
 
     Asteroid_Control current_locked_on;
     private bool is_aquiring_lock;
@@ -79,6 +81,18 @@ public class ShipControl : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
             acceleration += spaceship_thrust_value * transform.forward;
             acceleration -= drag_constant * velocity;
+
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            registerHit(10);
+            the_manager.updateShieldDisplay(shield);
+
+            if(shield<=0)
+            {
+                print("Shield is Destroyed!!!");
+            }
+        }
+
 
         // Faun Schutz - changed controls for missiles firing to two separate buttons
         if (Input.GetKeyDown(KeyCode.R))
@@ -177,6 +191,17 @@ public class ShipControl : MonoBehaviour
         }
 
 
+    internal void registerHit(int hitDamage)
+    {
+        shield = shield - hitDamage;
+
+        if(shield<=0)
+        {
+            shield = 0;
+        }
+    }
+
+
     private void OnCollisionEnter(Collision collision)
     {
         Asteroid_Control asteroid = collision.gameObject.GetComponent<Asteroid_Control>();
@@ -191,5 +216,6 @@ public class ShipControl : MonoBehaviour
     }
 
 
+>
 }
 
