@@ -9,7 +9,6 @@ public class Health : MonoBehaviour
     TextMeshPro ourHealthDisplay;
     internal int health = 100;
     bool isDisplayed = true;
-    internal int shipHealth = 3;
 
     Asteroid_Control my_asteroid;
 
