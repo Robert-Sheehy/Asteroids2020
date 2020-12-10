@@ -14,10 +14,10 @@ public class Manager_Script : MonoBehaviour
 
     PutTextHere ScreenText;
 
-    int game_radius=1000;
+    int game_radius=100;
 
 
-    int number_od_asteroids = 10;
+    int number_od_asteroids = 20;
 
     public GameObject asteroid_clone_template;
     private float MAX_LOC_ON_DISTANCE = 300f;
