@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ShipControl : MonoBehaviour
 {
+    Renderer render;
+
     Vector3 left_wing_spawn = new Vector3(-4.5f, -1.25f, -1.75f);
     Vector3 right_wing_spawn = new Vector3(4.5f, -1.25f, -1.75f);
     float rotationSpeed = 180; // Rotation spped in degrees pre second
@@ -16,11 +18,13 @@ public class ShipControl : MonoBehaviour
     CubeControl theCube;
     CameraControl myCamera;
     public GameObject missile_clone_template;
+    private int shield = 100;
 
-
-
+    GameObject shield3D;
+    Renderer shieldRender;
 
     Manager_Script the_manager;
+    Health health;
 
     Asteroid_Control current_locked_on;
     private bool is_aquiring_lock;
@@ -29,9 +33,23 @@ public class ShipControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        shield3D = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        shield3D.transform.parent = transform;
+        shield3D.transform.localScale=10*Vector3.one;
+        shieldRender = shield3D.GetComponent<Renderer>();
+        
+        shieldRender.material.color= new Color(0, 0, 1, 0.5f);
+        shieldRender.material.shader = Shader.Find("Transparent/Diffuse");
+        
+
+
         //     theCube = FindObjectOfType<CubeControl>();
         myCamera = Camera.main.GetComponent<CameraControl>();
         the_manager = FindObjectOfType<Manager_Script>();
+
+
+
+
     }
 
     // Update is called once per frame
@@ -64,6 +82,18 @@ public class ShipControl : MonoBehaviour
             acceleration += spaceship_thrust_value * transform.forward;
             acceleration -= drag_constant * velocity;
 
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            registerHit(10);
+            the_manager.updateShieldDisplay(shield);
+
+            if(shield<=0)
+            {
+                print("Shield is Destroyed!!!");
+            }
+        }
+
+
         // Faun Schutz - changed controls for missiles firing to two separate buttons
         if (Input.GetKeyDown(KeyCode.R))
             fire_MissileRight();
@@ -93,9 +123,9 @@ public class ShipControl : MonoBehaviour
                 is_aquiring_lock = true;
                 print(lock_timer.current_time());
 
-                if (lock_timer.current_time() < 0)
+                if (lock_timer.current_time() <= 0)
                 {
-                    print("Lock-on Aquired");
+                    current_locked_on.lock_Acquired();
 
                 }
             }
@@ -118,21 +148,30 @@ public class ShipControl : MonoBehaviour
         }
 
 
-        void fire_laser()
+    public ParticleSystem pewpew;
+
+    void fire_laser()
+    {
+        /*
+        ParticleSystem Laser = Instantiate(pewpew);
+        Laser.transform.position = transform.position;
+        Laser.Play(); */
+
+        Ray laser = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+        
+        
+        
+        if (Physics.Raycast(laser, out hit))
         {
-            Ray laser = new Ray(transform.position, transform.forward);
-            RaycastHit hit;
-            if (Physics.Raycast(laser, out hit))
-            {
-                Health objectHealth = hit.collider.gameObject.GetComponent<Health>();
-
-                if (objectHealth) objectHealth.adjust_health(-100);
-
-
-                print("Laser Hit");
-            }
-
+            Health objectHealth = hit.collider.gameObject.GetComponent<Health>();
+            
+            if (objectHealth)
+                objectHealth.adjust_health(-100);
+            
+            print("Laser Hit"); 
         }
+    }
 
      
 
@@ -160,6 +199,32 @@ public class ShipControl : MonoBehaviour
             return transform.position + local_vector.x * transform.right + local_vector.y * transform.up + local_vector.z * transform.forward;
         }
 
-    
+
+    internal void registerHit(int hitDamage)
+    {
+        shield = shield - hitDamage;
+
+        if(shield<=0)
+        {
+            shield = 0;
+        }
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Asteroid_Control asteroid = collision.gameObject.GetComponent<Asteroid_Control>();
+
+        if (asteroid)
+        {
+            print("bang");
+            //registerHit(50);
+        }
+
+        
+    }
+
+
+>
 }
 

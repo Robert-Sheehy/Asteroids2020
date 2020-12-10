@@ -34,6 +34,7 @@ public class Asteroid_Control : MonoBehaviour
     void Start()
     {
         render = GetComponentInChildren<Renderer>();
+       // render.material.color = new Color(0, 0, 1, 0.5f);
         speed_of_rotation = 18f;
   
 
@@ -99,10 +100,10 @@ public class Asteroid_Control : MonoBehaviour
         the_manager = manager_Script;
     }
 
-    internal void set_to_random_position_and_rotation()
+    internal void set_to_random_position_and_rotation(int max_distance)
     {
 
-        transform.position = new Vector3(UnityEngine.Random.Range(-WORLD_DIMENSION, WORLD_DIMENSION), UnityEngine.Random.Range(-WORLD_DIMENSION, WORLD_DIMENSION), UnityEngine.Random.Range(-WORLD_DIMENSION, WORLD_DIMENSION));
+        transform.position = new Vector3(UnityEngine.Random.Range(-max_distance, max_distance), UnityEngine.Random.Range(-max_distance, max_distance), UnityEngine.Random.Range(-max_distance, max_distance));
         axis_od_rotation = new Vector3(UnityEngine.Random.Range(-1000.0f, 1000.0f), UnityEngine.Random.Range(-1000.0f, 1000.0f), UnityEngine.Random.Range(-1000.0f, 1000.0f));
         axis_od_rotation.Normalize();
         velocity = new Vector3(UnityEngine.Random.Range(-1000.0f, 1000.0f), UnityEngine.Random.Range(-1000.0f, 1000.0f), UnityEngine.Random.Range(-1000.0f, 1000.0f));
@@ -139,6 +140,11 @@ public class Asteroid_Control : MonoBehaviour
 
         
        
+    }
+
+    internal void lock_Acquired()
+    {
+        objectHealth.locked();
     }
 
 }
