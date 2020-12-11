@@ -23,6 +23,8 @@ public class ShipControl : MonoBehaviour
     GameObject shield3D;
     Renderer shieldRender;
 
+    public ParticleSystem pewpew;
+
     Manager_Script the_manager;
     Health health;
 
@@ -38,7 +40,7 @@ public class ShipControl : MonoBehaviour
         shield3D.transform.localScale=10*Vector3.one;
         shieldRender = shield3D.GetComponent<Renderer>();
         
-        shieldRender.material.color= new Color(0, 0, 1, 0.5f);
+        shieldRender.material.color= new Color(0, 0, 1, 0.1f);
         shieldRender.material.shader = Shader.Find("Transparent/Diffuse");
         
 
@@ -148,23 +150,30 @@ public class ShipControl : MonoBehaviour
         }
 
 
-        void fire_laser()
+    
+
+    void fire_laser()
+    {        
+        ParticleSystem Laser = Instantiate(pewpew);
+        Laser.transform.position = transform.position;
+        Laser.transform.rotation = transform.rotation;
+        Laser.Play(); 
+
+        Ray laser = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+        
+        if (Physics.Raycast(laser, out hit))
         {
-            Ray laser = new Ray(transform.position, transform.forward);
-            RaycastHit hit;
-            if (Physics.Raycast(laser, out hit))
-            {
-                Health objectHealth = hit.collider.gameObject.GetComponent<Health>();
-
-                if (objectHealth) objectHealth.adjust_health(-100);
-
-
-                print("Laser Hit");
-            }
-
+            Health objectHealth = hit.collider.gameObject.GetComponent<Health>();
+            
+            if (objectHealth)
+                objectHealth.adjust_health(-5);
+            
+            print("Laser Hit");
         }
+    }
 
-     
+    
 
         // Faun Schutz - changed controls for missiles firing
          void fire_MissileRight()
@@ -216,6 +225,6 @@ public class ShipControl : MonoBehaviour
     }
 
 
->
+
 }
 
