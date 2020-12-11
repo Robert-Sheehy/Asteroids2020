@@ -14,7 +14,9 @@ public class Manager_Script : MonoBehaviour
 
     PutTextHere ScreenText;
 
-    int game_radius=100;
+
+    int game_radius=500;
+    Text asteroid_display, score_display, shield_display;
 
 
     int number_od_asteroids = 20;
@@ -26,10 +28,16 @@ public class Manager_Script : MonoBehaviour
     void Start()
 
 
-    {   asteroids = new List<Asteroid_Control>();
+    {   
+        
+        
+        asteroids = new List<Asteroid_Control>();
         
         ScreenText = FindObjectOfType<PutTextHere>();
-        
+
+        asteroid_display = ScreenText.createText("Number Of Asteroids :");
+        score_display = ScreenText.createText("Score :");
+        shield_display = ScreenText.createText("Shield: ");
 
         for (int i = 0; i < number_od_asteroids; i++)
         {
@@ -93,8 +101,15 @@ public class Manager_Script : MonoBehaviour
             astroid1.Astroid_Level = asteroid_being_destroyed.Astroid_Level -1;
             astroid2.Astroid_Level = asteroid_being_destroyed.Astroid_Level - 1;
         }
+
+        asteroid_display.text = " Asteroids " + asteroids.Count;
     }
-     
+
+    internal void updateShieldDisplay(int shield)
+    {
+        shield_display.text = "Shield: " + shield.ToString();
+    }
+
     internal Asteroid_Control get_me_any_asteroid(ShipControl ship)
     {
         currently_selected_asterois_index++;
@@ -150,7 +165,7 @@ public class Manager_Script : MonoBehaviour
     void Update()
     {
 
-        ScreenText.numberOfAsteroidsIs(asteroids.Count);
+        
 
         foreach (Asteroid_Control asteroid in asteroids)
         {
