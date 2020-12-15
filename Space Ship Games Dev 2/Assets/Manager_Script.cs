@@ -33,9 +33,10 @@ public class Manager_Script : MonoBehaviour
         
         ScreenText = FindObjectOfType<PutTextHere>();
 
-        asteroid_display = ScreenText.createText("Number Of Asteroids :");
-        score_display = ScreenText.createText("Score :");
-        shield_display = ScreenText.createText("Shield: ");
+        asteroid_display = ScreenText.createText("Asteroids: ", PutTextHere.Screen_Placements.Up);
+        
+        score_display = ScreenText.createText("Score: ", PutTextHere.Screen_Placements.Down);
+        shield_display = ScreenText.createText("Shield: ",PutTextHere.Screen_Placements.Down, PutTextHere.Screen_Placements.Left);
 
         for (int i = 0; i < number_od_asteroids; i++)
         {
@@ -106,6 +107,7 @@ public class Manager_Script : MonoBehaviour
     internal void updateShieldDisplay(int shield)
     {
         shield_display.text = "Shield: " + shield.ToString();
+        print("Shield is now " + shield.ToString());
     }
 
     internal Asteroid_Control get_me_any_asteroid(ShipControl ship)
