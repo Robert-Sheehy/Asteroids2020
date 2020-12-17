@@ -14,4 +14,9 @@ public class MainMenuScript : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void UpdateNumberOfAsteroids()
+    {
+
+    }
 }
