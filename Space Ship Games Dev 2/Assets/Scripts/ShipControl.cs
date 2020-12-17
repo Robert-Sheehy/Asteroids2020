@@ -7,6 +7,9 @@ public class ShipControl : MonoBehaviour
 {
     Renderer render;
 
+    int shield = 100; 
+
+    float shieldOpacity;
     Vector3 left_wing_spawn = new Vector3(-4.5f, -1.25f, -1.75f);
     Vector3 right_wing_spawn = new Vector3(4.5f, -1.25f, -1.75f);
     float rotationSpeed = 180; // Rotation spped in degrees pre second
@@ -18,10 +21,11 @@ public class ShipControl : MonoBehaviour
     CubeControl theCube;
     CameraControl myCamera;
     public GameObject missile_clone_template;
-    private int shield = 100;
 
     GameObject shield3D;
     Renderer shieldRender;
+
+    public ParticleSystem pewpew;
 
     Manager_Script the_manager;
     Health health;
@@ -30,7 +34,6 @@ public class ShipControl : MonoBehaviour
     private bool is_aquiring_lock;
     private Timer lock_timer;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -38,18 +41,15 @@ public class ShipControl : MonoBehaviour
         shield3D.transform.parent = transform;
         shield3D.transform.localScale=10*Vector3.one;
         shieldRender = shield3D.GetComponent<Renderer>();
-        
-        shieldRender.material.color= new Color(0, 0, 1, 0.5f);
+
+        shieldOpacity = (float)shield / 200;
+        //shieldOpacity = .8f;
+        shieldRender.material.color= new Color(0, 0, 1f, shieldOpacity);
+
         shieldRender.material.shader = Shader.Find("Transparent/Diffuse");
         
-
-
-        //     theCube = FindObjectOfType<CubeControl>();
         myCamera = Camera.main.GetComponent<CameraControl>();
         the_manager = FindObjectOfType<Manager_Script>();
-        
-
-
 
 
     }
@@ -57,6 +57,13 @@ public class ShipControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+       if (shieldOpacity>0)
+        {
+            shieldOpacity-=0.001f;
+            shieldRender.material.color = new Color(0, 0, 1f, shieldOpacity);
+        }
+
         acceleration = Vector3.zero;
         // acceleration += gravity * Vector3.down;
         Debug.DrawRay(transform.position, 50 * transform.forward);
@@ -147,26 +154,34 @@ public class ShipControl : MonoBehaviour
 
 
             myCamera.updatePosition(transform);
+
+
         }
 
 
-        void fire_laser()
+
+    void fire_laser()
+    {        
+        ParticleSystem Laser = Instantiate(pewpew);
+        Laser.transform.position = transform.position;
+        Laser.transform.rotation = transform.rotation;
+        Laser.Play(); 
+
+        Ray laser = new Ray(transform.position, transform.forward);
+        RaycastHit hit;
+        
+        if (Physics.Raycast(laser, out hit))
         {
-            Ray laser = new Ray(transform.position, transform.forward);
-            RaycastHit hit;
-            if (Physics.Raycast(laser, out hit))
-            {
-                Health objectHealth = hit.collider.gameObject.GetComponent<Health>();
-
-                if (objectHealth) objectHealth.adjust_health(-100);
-
-
-                print("Laser Hit");
-            }
-
+            Health objectHealth = hit.collider.gameObject.GetComponent<Health>();
+            
+            if (objectHealth)
+                objectHealth.adjust_health(-5);
+            
+            print("Laser Hit");
         }
+    }
 
-     
+    
 
         // Faun Schutz - changed controls for missiles firing
          void fire_MissileRight()
@@ -196,8 +211,8 @@ public class ShipControl : MonoBehaviour
     internal void registerHit(int hitDamage)
     {
         shield = shield - hitDamage;
-        
-        if (shield<=0)
+
+        if(shield<=0)
         {
             shield = 0;
         }
@@ -210,9 +225,12 @@ public class ShipControl : MonoBehaviour
 
         if (asteroid)
         {
-            //print("bang");
-            registerHit(50);
-            the_manager.updateShieldDisplay(shield);
+            shield -= 10;
+            shieldOpacity = (float)shield / 200;
+            shieldRender.material.color = new Color(0, 0, 1f, shieldOpacity);
+            //registerHit(50);
+            
+            print(shield);
         }
 
         
