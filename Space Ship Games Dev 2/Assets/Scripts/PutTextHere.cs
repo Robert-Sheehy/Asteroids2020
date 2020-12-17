@@ -8,27 +8,55 @@ public class PutTextHere : MonoBehaviour
 {
     internal enum Screen_Placements { Left, Right, Up, Down}
 
+    float warning_opasity = 1.0f;
+    Text Current_Warning;
     Text testText;
     Text shipText;
     Canvas Screen_Canvas;
+    float n_time = 5.0f;
+    bool notThere = true;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         Screen_Canvas = gameObject.GetComponentInChildren<Canvas>();
 
-        GameObject newGO = new GameObject("myTextGO");
-
-
         //Manager_Script.FindObjectsOfType<List<Asteroid_Control>>
 
         testText = FindObjectOfType<Text>();
         shipText = FindObjectOfType<Text>();
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(Current_Warning)
+        {           
+            Current_Warning.color = new Color(1, 0, 0, warning_opasity);
+            warning_opasity -= 0.01f;
+            if (warning_opasity < 0)
+                warning_opasity = 1.0f;
+        }
+
+        if(Current_Warning)
+        {
+
+            if (n_time > 0)
+                {
+                    Current_Warning.gameObject.SetActive(notThere);
+                    n_time -= 0.01f;
+                }
+            else if (n_time <= 0)
+                {
+                    notThere = false;
+                    Current_Warning.gameObject.SetActive(notThere);
+                }
+
+        }
+
 
     }
 
@@ -103,6 +131,7 @@ public class PutTextHere : MonoBehaviour
         myText.rectTransform.position = new Vector2(Screen.width / 2, Screen.height / 2);
         myText.rectTransform.sizeDelta = new Vector2(100, 50);
         myText.alignment = TextAnchor.MiddleCenter;
+        myText.color = Color.green;
         return myText;
     }
 
@@ -110,5 +139,13 @@ public class PutTextHere : MonoBehaviour
     {
         shipText.text = health.ToString();
     }
+
+    internal void createWarning(string warningMessage)
+    {
+        Current_Warning =  createText(warningMessage);
+        Current_Warning.rectTransform.sizeDelta = new Vector2(300, 200);
+        Current_Warning.fontSize = 48;
+    }
+
 
 }

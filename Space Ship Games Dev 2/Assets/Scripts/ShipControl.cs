@@ -30,6 +30,7 @@ public class ShipControl : MonoBehaviour
     private bool is_aquiring_lock;
     private Timer lock_timer;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +47,7 @@ public class ShipControl : MonoBehaviour
         //     theCube = FindObjectOfType<CubeControl>();
         myCamera = Camera.main.GetComponent<CameraControl>();
         the_manager = FindObjectOfType<Manager_Script>();
+        
 
 
 
@@ -194,8 +196,8 @@ public class ShipControl : MonoBehaviour
     internal void registerHit(int hitDamage)
     {
         shield = shield - hitDamage;
-
-        if(shield<=0)
+        
+        if (shield<=0)
         {
             shield = 0;
         }
@@ -208,8 +210,9 @@ public class ShipControl : MonoBehaviour
 
         if (asteroid)
         {
-            print("bang");
-            //registerHit(50);
+            //print("bang");
+            registerHit(50);
+            the_manager.updateShieldDisplay(shield);
         }
 
         
