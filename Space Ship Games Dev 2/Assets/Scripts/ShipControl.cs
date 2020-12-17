@@ -6,7 +6,9 @@ using UnityEngine;
 public class ShipControl : MonoBehaviour
 {
     Renderer render;
-    //float shield = 100; 
+
+    int shield = 100; 
+
     float shieldOpacity;
     Vector3 left_wing_spawn = new Vector3(-4.5f, -1.25f, -1.75f);
     Vector3 right_wing_spawn = new Vector3(4.5f, -1.25f, -1.75f);
@@ -19,7 +21,6 @@ public class ShipControl : MonoBehaviour
     CubeControl theCube;
     CameraControl myCamera;
     public GameObject missile_clone_template;
-    private int shield = 100;
 
     GameObject shield3D;
     Renderer shieldRender;
