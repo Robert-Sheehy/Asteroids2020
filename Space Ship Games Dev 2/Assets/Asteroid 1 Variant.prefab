@@ -50,7 +50,7 @@ GameObject:
   - component: {fileID: 3356601978383585420}
   - component: {fileID: 8865366618487709562}
   m_Layer: 8
-  m_Name: Sphere
+  m_Name: miniMapSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
