@@ -6,7 +6,9 @@ using UnityEngine;
 public class ShipControl : MonoBehaviour
 {
     Renderer render;
+
     int shield = 100; 
+
     float shieldOpacity;
     Vector3 left_wing_spawn = new Vector3(-4.5f, -1.25f, -1.75f);
     Vector3 right_wing_spawn = new Vector3(4.5f, -1.25f, -1.75f);
@@ -40,7 +42,7 @@ public class ShipControl : MonoBehaviour
         shield3D.transform.localScale=10*Vector3.one;
         shieldRender = shield3D.GetComponent<Renderer>();
 
-        shieldOpacity = shield / 200;
+        shieldOpacity = (float)shield / 200;
         //shieldOpacity = .8f;
         shieldRender.material.color= new Color(0, 0, 1f, shieldOpacity);
 
@@ -48,8 +50,6 @@ public class ShipControl : MonoBehaviour
         
         myCamera = Camera.main.GetComponent<CameraControl>();
         the_manager = FindObjectOfType<Manager_Script>();
-
-
 
 
     }
@@ -156,12 +156,9 @@ public class ShipControl : MonoBehaviour
             myCamera.updatePosition(transform);
 
 
-        
-            
         }
 
 
-    
 
     void fire_laser()
     {        
@@ -229,7 +226,7 @@ public class ShipControl : MonoBehaviour
         if (asteroid)
         {
             shield -= 10;
-            shieldOpacity = shield / 200;
+            shieldOpacity = (float)shield / 200;
             shieldRender.material.color = new Color(0, 0, 1f, shieldOpacity);
             //registerHit(50);
             
