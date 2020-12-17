@@ -7,4 +7,4 @@ has been destroyed once it hits '0';
 
 17/12/2020
 
-created warning alert that appears for a few seconds before disappearing. 
+created a warning alert that appears for a few seconds before disappearing. 
