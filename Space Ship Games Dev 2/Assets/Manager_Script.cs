@@ -14,23 +14,15 @@ public class Manager_Script : MonoBehaviour
 
     PutTextHere ScreenText;
 
-
     int game_radius=500;
     Text asteroid_display, score_display, shield_display;
-
-
-    int number_od_asteroids = 20;
 
     public GameObject asteroid_clone_template;
     private float MAX_LOC_ON_DISTANCE = 300f;
 
     // Start is called before the first frame update
     void Start()
-
-
-    {   
-        
-        
+    {
         asteroids = new List<Asteroid_Control>();
         
         ScreenText = FindObjectOfType<PutTextHere>();
@@ -40,13 +32,12 @@ public class Manager_Script : MonoBehaviour
         score_display = ScreenText.createText("Score: 0", PutTextHere.Screen_Placements.Down);
         shield_display = ScreenText.createText("Shield: 100",PutTextHere.Screen_Placements.Down, PutTextHere.Screen_Placements.Left);
 
-        for (int i = 0; i < number_od_asteroids; i++)
+        for (int i = 0; i < PersistentScript.numberOfAsteroids; i++)
         {
             asteroids.Add(spawnNewAsteroid());
         }
 
         players_ship = FindObjectOfType<ShipControl>();
-
     }
 
     private Asteroid_Control spawnNewAsteroid()
@@ -55,7 +46,7 @@ public class Manager_Script : MonoBehaviour
 
         Asteroid_Control new_asteroid_script = new_asteroid.GetComponent<Asteroid_Control>();
         new_asteroid_script.I_am_the_Manager(this);
-        new_asteroid_script.set_to_random_position_and_rotation(game_radius);
+        new_asteroid_script.set_to_random_position_and_rotation(PersistentScript.worldRadius);
         return new_asteroid_script;
     }
 

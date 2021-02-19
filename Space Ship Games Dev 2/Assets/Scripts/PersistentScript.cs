@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PersistentScript : MonoBehaviour
 {
-    public static int numberOfAsteroids;
-    public static int musicVolume;
-    public static int soundEffectsVolume;
+    public static int numberOfAsteroids;    
+    public static int worldRadius;
+    public static int gameVolume;
 
     // Start is called before the first frame update
     void Start()
