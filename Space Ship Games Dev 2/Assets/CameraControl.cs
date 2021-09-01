@@ -22,8 +22,9 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, desired_destination, 0.05f);
-        transform.rotation = Quaternion.Slerp(transform.rotation, desired_orientation, 0.05f);
+
+       transform.position = Vector3.Lerp(transform.position, desired_destination, 0.05f);
+       transform.rotation = Quaternion.Slerp(transform.rotation, desired_orientation, 0.05f);
         
     }
 
